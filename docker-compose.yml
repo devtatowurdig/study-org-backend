@@ -30,7 +30,8 @@ services:
       NODE_ENV: production
       DATABASE_URL: postgresql://study_org:study_org@postgres:5432/study_org?schema=public
       API_PORT: ${API_PORT:-3071}
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://studyorg.frameworksenac.com.br}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://studyorg.frameworksenac.com.br,http://studyorg.frameworksenac.com.br:3070,https://studyorg.frameworksenac.com.br:3070}
+      ALLOWED_ORIGIN_PATTERNS: ${ALLOWED_ORIGIN_PATTERNS:-^https?://[^/]+:3070}
       JWT_SECRET: ${JWT_SECRET:?Defina JWT_SECRET no ambiente antes de subir em producao}
     ports:
       - "${API_PORT:-3071}:3071"

@@ -15,12 +15,21 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173,ht
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
+const allowedOriginPatterns = (process.env.ALLOWED_ORIGIN_PATTERNS || "")
+  .split(",")
+  .map((pattern) => pattern.trim())
+  .filter(Boolean)
+  .map((pattern) => new RegExp(pattern));
+
+function isAllowedOrigin(origin: string) {
+  return allowedOrigins.includes(origin) || allowedOriginPatterns.some((pattern) => pattern.test(origin));
+}
 
 app.set("trust proxy", 1);
 
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || isAllowedOrigin(origin)) {
       callback(null, true);
       return;
     }
@@ -47,4 +56,5 @@ app.use("/users", usersRouter);
 app.listen(port, "0.0.0.0", () => {
   console.log(`[BACKEND] - Servidor rodando na porta ${port}`);
   console.log(`[BACKEND] - Origens permitidas: ${allowedOrigins.join(", ")}`);
+  console.log(`[BACKEND] - Padroes de origem permitidos: ${allowedOriginPatterns.map(String).join(", ") || "nenhum"}`);
 });
