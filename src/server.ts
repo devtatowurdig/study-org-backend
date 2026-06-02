@@ -8,13 +8,13 @@ import tasksRouter from "./routes/tasks";
 import usersRouter from "./routes/users";
 
 const app = express();
-const port = process.env.API_PORT || 3000;
+const port = process.env.API_PORT || 3071;
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (_req, res) => {
-  res.send("API: Studio Org - Organize seus estudos");
+  res.send("<h1 style='color: blue; font-size: 24px; text-align: center;'>API: Studio Org - Organize seus estudos</h1>");
 });
 
 app.use("/auth", authRouter);

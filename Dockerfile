@@ -9,6 +9,6 @@ COPY . .
 
 RUN npm run prisma:generate
 
-EXPOSE 3000
+EXPOSE 3071
 
 CMD ["sh", "-c", "npm run prisma:push && npm run start"]

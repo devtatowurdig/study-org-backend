@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: study_org
       POSTGRES_PASSWORD: study_org
     ports:
-      - "5432:5432"
+      - "3072:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -28,10 +28,10 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://study_org:study_org@postgres:5432/study_org?schema=public
-      PORT: 3000
+      API_PORT: 3071
+      JWT_SECRET: change-this-secret-in-production
     ports:
-      - "3000:3000"
-    command: sh -c "npm run prisma:generate && npm run prisma:push && npm run start"
+      - "3071:3071"
 
 volumes:
   postgres_data:

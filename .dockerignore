@@ -1,5 +1,7 @@
 node_modules
 generated
+.git
 .env
 npm-debug.log
+Dockerfile
 docker-compose*.yml
