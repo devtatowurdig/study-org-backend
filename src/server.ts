@@ -25,8 +25,6 @@ function isAllowedOrigin(origin: string) {
   return allowedOrigins.includes(origin) || allowedOriginPatterns.some((pattern) => pattern.test(origin));
 }
 
-app.set("trust proxy", 1);
-
 app.use(cors({
   origin(origin, callback) {
     if (!origin || isAllowedOrigin(origin)) {
