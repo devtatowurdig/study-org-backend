@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd ~/
+            cd ~/study-org-backend
 
             echo "📥 Atualizando código..."
             git pull origin main
