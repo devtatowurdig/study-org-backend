@@ -3,7 +3,7 @@ name: Deploy em Produção
 on:
   push:
     branches:
-      - main # dispara somente quando o push vai para a main
+      - master # dispara somente quando o push vai para a master
 
 jobs:
   deploy:
@@ -21,7 +21,7 @@ jobs:
             cd ~/study-org-backend
 
             echo "📥 Atualizando código..."
-            git pull origin main
+            git pull origin master
 
             echo "🐳 Reconstruindo containers..."
             docker compose up -d --build
