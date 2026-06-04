@@ -11,7 +11,7 @@ import usersRouter from "./routes/users";
 
 const app = express();
 const port = Number(process.env.API_PORT || 3071);
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173,http://localhost:3000")
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://95.111.238.203:3070,http://localhost:3070,http://localhost:5173,http://localhost:3000")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
